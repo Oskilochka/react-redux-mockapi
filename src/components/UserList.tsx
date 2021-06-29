@@ -2,6 +2,7 @@ import React, {FC, useEffect} from 'react'
 import {useTypeSelector} from "../hooks/useTypeSelector";
 import {fetchUsers} from "../store/action-creators/user";
 import {useActions} from "../hooks/useActions";
+import './index.css'
 
 export const UserList: FC = () => {
     const {users, error, loading} = useTypeSelector(state => state.user)
@@ -20,8 +21,7 @@ export const UserList: FC = () => {
 
     return (
         <div>
-            <h1> User list </h1>
-            {users.map(user => <div>{user.name}</div>)}
+            {users.map(user => <div className='listItem'>* {user.name}</div>)}
         </div>
     )
 }
