@@ -1,34 +1,34 @@
-import React, {FC, useEffect} from 'react'
-import {useTypeSelector} from "../hooks/useTypeSelector";
-import {fetchTodos} from "../store/action-creators/todo";
-import {useActions} from "../hooks/useActions";
-import './index.css'
+import React from "react";
+import { useTypeSelector } from "hooks/useTypeSelector";
+import { useActions } from "hooks/useActions";
+import "./index.css";
 
-export const TodoList: FC = () => {
-    const {todos, error, loading, page, limit} = useTypeSelector(state => state.todo)
-    const {fetchTodos, setTodoPage} = useActions()
-    const pages = [1, 2, 3, 4, 5]
+export const TodoList = React.memo(() => {
+  const { todos, error, loading, page, limit } = useTypeSelector(state => state.todo);
+  const { fetchTodos, setTodoPage } = useActions();
+  const pages = [ 1, 2, 3, 4, 5 ];
 
-    useEffect(() => {
-        fetchTodos(page, limit)
-    }, [page])
+  React.useEffect(() => {
+    fetchTodos(page, limit);
+  }, [ page ]);
 
-    if (error) {
-        return <h1>{error}</h1>
+  if (error) {
+    return <h1>{error}</h1>;
+  }
+
+  return <React.Fragment>
+    <div className="pagesWrap">
+      {pages.map(pageNumber =>
+        <div onClick={() => setTodoPage(pageNumber)} className={pageNumber === page ? "page activePage" : "page "}>
+          {pageNumber}
+        </div>)
+      }
+    </div>
+    {loading
+      ? <h1>Loading...</h1>
+      : <div>
+        {todos.map(todo => <div key={todo.id} className="listItem">{todo.id}. {todo.title}</div>)}
+      </div>
     }
-
-    return (
-        <div>
-            <div className='pagesWrap'>
-                {pages.map(p => <div onClick={() => setTodoPage(p)}
-                                     className={p === page ? 'page activePage' : 'page '}>
-                    {p}
-                </div>)}
-            </div>
-            {loading
-                ? <h1>Loading...</h1>
-                : todos.map(todo => <div key={todo.id} className='listItem'>{todo.id}. {todo.title}</div>)
-            }
-        </div>
-    )
-}
+  </React.Fragment>;
+});
