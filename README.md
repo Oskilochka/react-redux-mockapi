@@ -10,5 +10,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-
-![Screenshot 2023-07-17 at 13.24.05.png](..%2F..%2F..%2F..%2Fvar%2Ffolders%2Fj_%2F01l602m902s02prhnfhln6h00000gn%2FT%2FTemporaryItems%2FNSIRD_screencaptureui_7DRgvR%2FScreenshot%202023-07-17%20at%2013.24.05.png)
+<img width="1647" alt="Screenshot" src="https://github.com/Oskilochka/react-redux-mockapi/assets/57913900/4a1aa91f-15ee-441f-9df1-b29389e65da6">
